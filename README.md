@@ -13,7 +13,7 @@ Provisioned an Ubuntu Server on AWS EC2 and configured structured user/group acc
 - Launched an Ubuntu Server EC2 instance
 - Updated packages and set a descriptive hostname
 - Installed basic admin tooling (`net-tools`, `tree`)
-  ![setup an Ubuntu server](screenshots/setting-up-ubuntu-server.png)
+  ![setup an Ubuntu server](screenshot/setting-up-ubuntu-server.png)
 
 ### 2. User & Group Management
 Simulated a small company with three departments:
@@ -25,8 +25,8 @@ Simulated a small company with three departments:
 | carol | admins, sudo      | Administrative access              |
 
 Created groups and users, then practiced common admin operations: adding/removing users from groups, locking/unlocking accounts, and deleting users along with their home directories.
-  ![Creating users and ](screenshots/creating-a-user.png)
-  ![groups](screenshots/adding-users-to-groups.png)
+  ![Creating users and ](screenshot/creating-a-user.png)
+  ![groups](screenshot/adding-users-to-group.png)
 
 ### 3. File Permissions
 Created shared department directories under `/data/` with group-based access control:
@@ -42,7 +42,7 @@ sudo chmod g+s /data/developers   # setgid bit
 **Why the setgid bit:** without it, new files created inside the folder default to the creating user's *personal* group, not `developers`. Over time this quietly breaks shared access, since teammates lose permission to files their colleagues created. Setting `g+s` forces every new file to inherit the directory's group automatically.
 
 Verified behavior by creating a test file as `alice` and confirming group ownership and permissions were applied correctly.
-  ![Permissions](screenshots/permissions.png)
+  ![Permissions](screenshot/permissions.png)
 
 
 ### 4. SSH Hardening
@@ -90,7 +90,7 @@ Diagnosis process:
 - Password authentication is rejected for all users
 - A user not listed in `AllowUsers` is rejected
 - Security Group only permits inbound access on 2222 from my own IP
-  ![Verification](screenshots/working.png)
+  ![Verification](screenshot/working.png)
 
 ## Skills Demonstrated
 Linux user and group administration, file permission design (including setgid), SSH hardening and key-based authentication, AWS EC2 and Security Group configuration, and systemd service/socket troubleshooting.
